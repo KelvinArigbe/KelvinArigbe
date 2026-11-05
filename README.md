@@ -5,6 +5,8 @@
   &nbsp; · &nbsp;
   <a href="https://github.com/KelvinArigbe/northstar-cloud-security"><b>Cloud Security Case Studies ↗</b></a>
   &nbsp; · &nbsp;
+  <a href="https://github.com/KelvinArigbe/url-shortener"><b>Kubernetes DevSecOps Project ↗</b></a>
+  &nbsp; · &nbsp;
   <a href="https://github.com/KelvinArigbe?tab=repositories">All repositories</a>
 </p>
 
@@ -12,7 +14,7 @@
 
 I'm Kelvin, based in Lagos, Nigeria. I focus on **Azure cloud security, identity and access management, infrastructure security, and DevSecOps delivery**.
 
-I build practical labs and engineering case studies around real operational questions: how should access be restricted, how can cloud misconfigurations be detected, how do we secure a delivery pipeline, and how do we prove that a remediation works?
+I build practical labs and engineering case studies around operational questions: how should access be restricted, how can cloud misconfigurations be detected, how do we secure a delivery pipeline, and how do we prove that a remediation works?
 
 My portfolio distinguishes between deployed lab work, validated code, simulations, and architecture proposals. Each project documents its evidence and remaining limitations.
 
@@ -23,7 +25,7 @@ My portfolio distinguishes between deployed lab work, validated code, simulation
 | Cloud platform | Microsoft Azure, Azure CLI, Azure Policy, Key Vault |
 | Identity and access | Microsoft Entra ID, Azure RBAC, least privilege, Conditional Access, Managed Identity |
 | Infrastructure as Code | Terraform, Bicep |
-| DevSecOps | GitHub Actions, Docker, Azure Container Registry, Trivy |
+| DevSecOps | GitHub Actions, Docker, Kubernetes, Azure Container Registry, Trivy |
 | Monitoring and security operations | Microsoft Defender for Cloud, Log Analytics, KQL, Microsoft Sentinel |
 | Scripting and systems | PowerShell, Python, Linux |
 
@@ -36,36 +38,43 @@ Built a GitHub Actions pipeline for a React/TypeScript application using Docker,
 
 *Current boundary:* the deployment job rebuilds the image on the VM rather than promoting the exact image digest scanned by the hosted runner. Terraform provisioning and runtime monitoring remain future work.
 
-### 02 — [Azure IAM Access Review and Least-Privilege Remediation](https://github.com/KelvinArigbe/azure-iam-least-privilege)
+### 02 — [URL Shortener — Kubernetes DevSecOps](https://github.com/KelvinArigbe/url-shortener)
+**Docker · Kubernetes · GitHub Actions · Trivy · PostgreSQL · Redis**
+
+Built a Flask URL-shortening API with PostgreSQL persistence, Redis caching, Nginx reverse proxying, and Gunicorn. The GitHub Actions pipeline runs tests, dependency checks, Trivy source/image scans, and publishes images to GHCR. Deployed the published image to a local Minikube cluster and verified application health, database/cache connectivity, URL creation, and HTTP redirects.
+
+*Current boundary:* Kubernetes runs locally in Minikube, not on a public cloud cluster. CI publishes the image; the Kubernetes rollout is manually triggered.
+
+### 03 — [Azure IAM Access Review and Least-Privilege Remediation](https://github.com/KelvinArigbe/azure-iam-least-privilege)
 **Entra ID · Azure RBAC · Custom roles · PowerShell**
 
 Tested how direct and group-based role assignments affect effective access in a personal Azure lab. Replaced broad Contributor access with Reader, investigated additive permissions, and created a narrowly scoped custom role for tag maintenance. Includes a PowerShell audit script with documented scope and limitations.
 
-### 03 — [Azure Blob Storage Security Lab](https://github.com/KelvinArigbe/azure-blob-storage-security)
+### 04 — [Azure Blob Storage Security Lab](https://github.com/KelvinArigbe/azure-blob-storage-security)
 **Storage security · Entra ID · Shared Key · PowerShell**
 
 Reproduced anonymous blob access, disabled account-level public access, and verified that authorised reads still worked through Microsoft Entra ID. Also disabled Shared Key access, checked HTTPS and TLS settings, and documented the remaining network and logging gaps.
 
-### 04 — [Northstar Cloud Security](https://github.com/KelvinArigbe/northstar-cloud-security)
+### 05 — [Northstar Cloud Security](https://github.com/KelvinArigbe/northstar-cloud-security)
 **Terraform · Incident investigation · Detection engineering · Zero Trust**
 
 A collection of five security case studies covering Azure infrastructure review, Entra ID compromise, Linux workload compromise, excessive privilege, and secure network design. Terraform formatting and validation run in GitHub Actions.
 
 *Current boundary:* the incidents use synthetic lab evidence; the network architecture is a design proposal, and no Azure resources are deployed by this repository.
 
-### 05 — [SecureBank Pro](https://github.com/KelvinArigbe/SecureBank-Pro)
+### 06 — [SecureBank Pro](https://github.com/KelvinArigbe/SecureBank-Pro)
 **Node.js · Bicep · Key Vault · Managed Identity · CI validation**
 
 A security-focused application and Azure infrastructure prototype. Includes an Express API with tests and Bicep templates for selected application, identity, Key Vault, and database components. GitHub Actions runs application tests and Bicep compilation.
 
 *Current boundary:* the application does not yet connect to the SQL database, and successful Bicep compilation is not evidence of a live Azure deployment.
 
-### 06 — [SecureBastion](https://github.com/KelvinArigbe/SecureBastion)
-**Azure security architecture · Bicep · IAM · Monitoring**
+### Additional labs
 
-An Azure security architecture simulation covering identity, administration, network protection, data protection, threat protection, monitoring, and security operations. Includes configuration examples, synthetic events, and documented remediation patterns.
-
-*Current boundary:* this is an architecture and configuration simulation, not proof that every listed Azure control was deployed.
+- [Zero Trust vs Perimeter Security Simulation](https://github.com/KelvinArigbe/zero-trust-simulation) — Python simulation with risk-threshold sensitivity analysis; synthetic model, not a live enforcement platform.
+- [SecureBastion](https://github.com/KelvinArigbe/SecureBastion) — Azure security architecture and configuration simulation.
+- [TraceGuardian](https://github.com/KelvinArigbe/TraceGuardian) — historical Azure monitoring and security-posture screenshots, with evidence boundaries documented.
+- [DevOps Deployment Lab](https://github.com/KelvinArigbe/devops-deployment-lab) — Docker/Nginx static-site build and HTTP verification in GitHub Actions.
 
 ## Certifications and education
 
